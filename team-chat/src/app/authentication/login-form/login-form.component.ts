@@ -30,6 +30,7 @@ export class LoginFormComponent implements OnInit {
         console.log(this.serverAuth.isAuthenticated());
         this.router.navigate(['chat-board']);
       } else {
+        alert('incorrect username and password!');
       }
     })
 

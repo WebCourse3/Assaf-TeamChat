@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { User } from '../user';
 
-const authUrl: string = 'http://10.103.50.36:3000/login';
+const authUrl: string = 'http://localhost:3000/api/users/login';
 
 @Injectable()
 export class AuthenticationService {
@@ -17,11 +17,9 @@ export class AuthenticationService {
 
   Authenticate(user: User): Observable<boolean> {
     this.user = user;
-   let params = new HttpParams()
-     .set('username', this.user.name)
-     .set('password', this.user.password);
+    let body = user;
 
-   return this.http.get<boolean>(authUrl, {params: params});
+    return this.http.post<boolean>(authUrl, body);
   }
 
   setAuthenticated(): void {

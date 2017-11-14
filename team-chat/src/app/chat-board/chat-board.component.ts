@@ -1,10 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import io from 'socket.io-client';
-import  eio from 'engine.io';
+import * as io from 'socket.io-client';
 
-const chatUrl: string = 'http://10.103.50.36:3000';
-
-
+const chatUrl: string = 'http://localhost:3000';
 
 @Component({
   selector: 'app-chat-board',
@@ -13,16 +10,16 @@ const chatUrl: string = 'http://10.103.50.36:3000';
   encapsulation: ViewEncapsulation.None
 })
 export class ChatBoardComponent implements OnInit {
+  socket: any;
+
   constructor() {
-    io.connect(chatUrl);
+
   }
 
   ngOnInit() {
-   /* var socket = new eio.Socket('ws://localhost/'); //'ws://localhost/'
-    socket.on('open', function(){
-      socket.on('message', function(data){});
-
-    });*/
+    this.socket = io(chatUrl);
+    this.socket.on('connect', () => {alert('you are connected')});
+    this.socket.on('disconnect', () => {});
   }
 
 }

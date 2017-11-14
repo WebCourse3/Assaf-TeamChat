@@ -7,7 +7,6 @@ import { HeaderComponent } from './header/header.component';
 import { LoginFormComponent } from './authentication/login-form/login-form.component';
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProtectedDirective } from './authentication/protected.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationService } from './authentication/authentication.service';
@@ -19,7 +18,6 @@ import { ChatBoardComponent } from './chat-board/chat-board.component';
     HeaderComponent,
     LoginFormComponent,
     FooterComponent,
-    DashboardComponent,
     ProtectedDirective,
     ChatBoardComponent
   ],
