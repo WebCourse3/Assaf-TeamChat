@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { User } from '../user';
+import { User } from '../../user';
 import { Router } from '@angular/router';
-import { UserService } from '../user.service';
-import { ServerAuthenticationService } from '../server-authentication.service';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-login-form',
@@ -16,7 +15,7 @@ export class LoginFormComponent implements OnInit {
     password: ''
   };
 
-  constructor(private router: Router, private userService: UserService, private serverAuth: ServerAuthenticationService) {
+  constructor(private router: Router, private serverAuth: AuthenticationService) {
   }
 
   ngOnInit() {
@@ -24,13 +23,13 @@ export class LoginFormComponent implements OnInit {
 
   loginUser(): void
   {
-    this.userService.LogIn(this.user);
-    this.serverAuth.Authenticate().subscribe(res=>{
-
+    this.serverAuth.Authenticate(this.user).subscribe(res=>{
       if (res === true) {
+        this.serverAuth.setAuthenticated();
+        this.serverAuth.setUser(this.user);
+        console.log(this.serverAuth.isAuthenticated());
         this.router.navigate(['dashboard']);
       } else {
-        this.user.name = this.user.name + "1";
       }
     })
 

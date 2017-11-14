@@ -1,12 +1,12 @@
 import { Directive, Input } from '@angular/core';
-import { UserService } from './user.service';
 import { Router } from '@angular/router';
+import { AuthenticationService } from './authentication.service';
 
 @Directive({ selector: '[protected]' })
 
 export class ProtectedDirective {
-  constructor(private userService: UserService, private router: Router) {
-    if(!userService.IsLoggedIn()){
+  constructor(private router: Router, private authService: AuthenticationService) {
+    if(!this.authService.isAuthenticated()){
       this.router.navigate(['login-form']);
     }
   }
