@@ -9,9 +9,11 @@ const authUrl: string = 'http://10.103.50.36:3000/login';
 export class AuthenticationService {
 
   private user: User;
-  private authenticated:boolean = false;
+  private authenticated;
 
-  constructor(  private http: HttpClient) { }
+  constructor(  private http: HttpClient) {
+    this.authenticated = false;
+  }
 
   Authenticate(user: User): Observable<boolean> {
     this.user = user;

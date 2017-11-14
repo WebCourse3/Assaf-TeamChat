@@ -11,6 +11,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProtectedDirective } from './authentication/protected.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationService } from './authentication/authentication.service';
+import { ChatBoardComponent } from './chat-board/chat-board.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AuthenticationService } from './authentication/authentication.service';
     LoginFormComponent,
     FooterComponent,
     DashboardComponent,
-    ProtectedDirective
+    ProtectedDirective,
+    ChatBoardComponent
   ],
   imports: [
     BrowserModule,

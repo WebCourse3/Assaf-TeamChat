@@ -28,7 +28,7 @@ export class LoginFormComponent implements OnInit {
         this.serverAuth.setAuthenticated();
         this.serverAuth.setUser(this.user);
         console.log(this.serverAuth.isAuthenticated());
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['chat-board']);
       } else {
       }
     })
